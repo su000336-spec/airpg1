@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${view.pageTitle}">Four Years Later</title>
+    <link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+<main class="layout">
+    <div class="site-credit">Made by Kenny Su</div>
+    <section class="panel story">
+        <div class="section-tag" th:text="${view.sectionLabel}">College RPG</div>
+        <h1 th:text="${view.heading}">Four Years Later</h1>
+        <div class="copy">
+            <p th:each="line : ${view.lines}" th:text="${line}"></p>
+        </div>
+
+        <div class="name-entry" th:if="${view.state.step.name() == 'WELCOME'}">
+            <form method="post" th:action="@{/begin}">
+                <label class="field-label" for="playerName">Your Name</label>
+                <input id="playerName" name="playerName" type="text" maxlength="60" placeholder="Enter your name" required>
+                <button class="button primary" type="submit">Start your journey</button>
+            </form>
+        </div>
+
+        <div class="choices" th:if="${view.state.step.name() != 'WELCOME'}">
+            <form method="post" th:action="@{/choice}">
+                <button
+                        class="choice"
+                        th:each="option : ${view.options}"
+                        type="submit"
+                        name="value"
+                        th:value="${option.value}"
+                        th:text="${option.label}">
+                    Choice
+                </button>
+            </form>
+        </div>
+
+        <form class="restart" method="post" th:action="@{/start}">
+            <button class="button ghost" type="submit">Restart game</button>
+        </form>
+    </section>
+
+    <aside class="panel sidebar" th:if="${view.showStats}">
+        <h2>Stats</h2>
+        <p class="player-name" th:if="${!view.state.playerName.isEmpty()}" th:text="${view.state.playerName}">Student</p>
+        <dl class="stats">
+            <div>
+                <dt>Intelligence</dt>
+                <dd th:text="${view.state.intelligence}">10</dd>
+            </div>
+            <div>
+                <dt>Creativity</dt>
+                <dd th:text="${view.state.creativity}">10</dd>
+            </div>
+            <div>
+                <dt>AI Literacy</dt>
+                <dd th:text="${view.state.aiLiteracy}">0</dd>
+            </div>
+        </dl>
+
+        <div class="summary" th:if="${view.showSummary}">
+            <h3>Degree</h3>
+            <p th:text="${view.state.major}">Undeclared</p>
+
+            <h3>Skills</h3>
+            <ul th:if="${!view.state.skills.isEmpty()}">
+                <li th:each="skill : ${view.state.skills}" th:text="${skill}">Skill</li>
+            </ul>
+            <p th:if="${view.state.skills.isEmpty()}">No extra skills earned.</p>
+        </div>
+    </aside>
+</main>
+</body>
+</html>

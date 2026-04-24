@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello</title>
+    <link rel="stylesheet" th:href="@{/css/site.css}">
+</head>
+<body>
+<main class="layout single">
+    <section class="panel story">
+        <div class="section-tag">Status</div>
+        <h1>Spring Boot is working</h1>
+        <p th:text="${message}">Hello! Your web app is working.</p>
+        <a class="button primary" th:href="@{/}">Back to the game</a>
+    </section>
+</main>
+</body>
+</html>
