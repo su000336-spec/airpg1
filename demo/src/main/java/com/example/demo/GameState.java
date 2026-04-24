@@ -12,7 +12,7 @@ public class GameState {
     private int resume = 0;
     private String major = "Undeclared";
     private GameStep step = GameStep.WELCOME;
-    private final List<String> skills = new ArrayList<>();git --version
+    private final List<String> skills = new ArrayList<>();
     private String endingTitle;
     private final List<String> endingLines = new ArrayList<>();
 
