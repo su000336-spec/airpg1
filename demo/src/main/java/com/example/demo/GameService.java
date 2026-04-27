@@ -28,11 +28,11 @@ public class GameService {
                     "Four Years Later",
                     List.of(
                             "Welcome to Four Years Later.",
-                            "Enter your name to begin your college journey.",
                             "This game simulates four years of college as AI is rapidly changing the job market.",
                             "Most entry-level jobs are going to be replaced by AI sooner than you imagine.",
                             "Your choices will shape your skills, your future, and your ending.",
                             "Be careful... Every decision matters."
+                            "Enter your name to begin your college journey.",
                     ),
                     List.of(),
                     true,
@@ -43,9 +43,9 @@ public class GameService {
                     "Your first-year writing professor assigns a 1000-word review about yourself.",
                     List.of("But you do not know what to say about yourself yet.", "How do you complete the assignment?"),
                     List.of(
-                            new DecisionOption(1, "Do it on your own"),
-                            new DecisionOption(2, "Brainstorm with AI, then write it yourself"),
-                            new DecisionOption(3, "Let AI write the whole thing")
+                            new DecisionOption(1, "Do it all on your own"),
+                            new DecisionOption(2, "Brainstorm and outline with AI, then write it yourself"),
+                            new DecisionOption(3, "Let AI write the entire assignment")
                     ));
             case FRESHMAN_2 -> question(state, "Winter Break", "Freshman winter break arrives.",
                     List.of("How do you want to spend your free time?"),
@@ -63,11 +63,11 @@ public class GameService {
                     ));
                 case FRESHMAN_4 -> freshmanSummerView(state);
                 case SOPHOMORE_1 -> question(state, "Sophomore Year", "Public speaking class wants a 15-minute talk about yourself.",
-                        List.of("What do you do?"),
+                        List.of("But you have no idea. What do you do?"),
                         List.of(
                                 new DecisionOption(1, "Ask family for real stories"),
-                                new DecisionOption(2, "Use ChatGPT to brainstorm ideas"),
-                                new DecisionOption(3, "Let ChatGPT write the whole speech")
+                                new DecisionOption(2, "Use ChatGPT to come up with ideas"),
+                                new DecisionOption(3, "Let ChatGPT write a script then read it out in class")
                         ));
                 case SOPHOMORE_2 -> question(state, "Research Opportunity", "A professor invites you to join research on AI in the workplace.",
                         List.of("Do you join?"),
@@ -99,7 +99,7 @@ public class GameService {
                             new DecisionOption(2, "Write it first, then ask AI for improvements"),
                             new DecisionOption(3, "Go to the university career center")
                     ));
-            case JUNIOR_3 -> question(state, "Physics Struggle", "Physics feels harder than expected.",
+            case JUNIOR_3 -> question(state, "Challenging Physics Class", "Physics feels harder than expected.",
                     List.of("What action do you take?"),
                     List.of(
                             new DecisionOption(1, "Work hard and learn deeply"),
@@ -111,7 +111,7 @@ public class GameService {
                     List.of(
                             new DecisionOption(1, "Carry the team yourself"),
                             new DecisionOption(2, "Confront them directly"),
-                            new DecisionOption(3, "Do the bare minimum")
+                            new DecisionOption(3, "Do the bare minimum to passs")
                     ));
             case SENIOR_1 -> question(state, "Senior Year", "There is a campus job fair this weekend.",
                     List.of("Do you go networking?"),
@@ -120,17 +120,17 @@ public class GameService {
                             new DecisionOption(2, "No, stay home")
                     ));
             case SENIOR_2 -> question(state, "Last Winter Break", "It is your final winter break as a college student.",
-                    List.of("What do you do?"),
+                    List.of("What do want to spend your time on?"),
                     List.of(
                             new DecisionOption(1, "Take a break at home"),
-                            new DecisionOption(2, "Revise your resume"),
+                            new DecisionOption(2, "Revise/ENhance your resume"),
                             new DecisionOption(3, "Study AI's effect on the job market")
                     ));
             case SENIOR_3 -> question(state, "Graduation Is Close", "Do you start applying for full-time jobs now?",
                     List.of("Choose your move."),
                     List.of(
-                            new DecisionOption(1, "Yes, send lots of applications"),
-                            new DecisionOption(2, "No, wait")
+                            new DecisionOption(1, "Yes, start sending out applications"),
+                            new DecisionOption(2, "No. ")
                     ));
             case GRADUATION -> new GameView(
                     "Four Years Later",
@@ -140,7 +140,7 @@ public class GameService {
                             "UNIVERSITY OF MINNESOTA",
                             state.getPlayerName(),
                             "The faculty confer upon you the degree of Bachelor of Science in " + state.getMajor() + ".",
-                            "Your college journey is complete."
+                            "You have successfully completed your college journey"
                     ),
                     List.of(new DecisionOption(1, "See final results")),
                     true,
